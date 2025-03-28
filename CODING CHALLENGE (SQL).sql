@@ -135,7 +135,7 @@ ORDER BY p.ParticipantType, p.ParticipantName; --Sorts the output by Participant
 
 SELECT s.Name, SUM(d.DonationAmount) AS TotalDonations -- adds donationAmount
 FROM Shelters s
-LEFT JOIN Donations d ON s.ShelterID = d.DonationID --This attempts to join Shelters with Donations based on ShelterID = DonationID
+LEFT JOIN Donations d ON s.ShelterID = s.ShelterID --This attempts to join Shelters with Donations based on ShelterID
 GROUP BY s.Name; --calculated by s.name
 
 /*9)Write an SQL query that retrieves the names of pets from the "Pets" table that do not have an 
@@ -175,7 +175,7 @@ Example: City=Chennai  */
 
 SELECT COUNT(*) AS ParticipantCount
 FROM Participants p
-JOIN Shelters s ON p.ParticipantID = s.ShelterID
+JOIN Shelters s ON e.ShelterID = s.ShelterID
 WHERE s.Location = 'Chennai';
 
 /* 14)Retrieve a list of unique breeds for pets with ages between 1 and 5 years. */
@@ -196,7 +196,7 @@ WHERE AvailableForAdoption = 1;
 
 SELECT S.Name, COUNT(P.PetID) AS AvailablePets
 FROM Shelters S
-LEFT JOIN Pets P ON S.ShelterID = P.PetID AND P.AvailableForAdoption = 1
+LEFT JOIN Pets P ON S.ShelterID = S.ShelterID AND P.AvailableForAdoption = 1
 GROUP BY S.Name;
 
 --18)Find pairs of pets from the same shelter that have the same breed. 
